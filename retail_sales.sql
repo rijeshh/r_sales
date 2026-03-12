@@ -21,25 +21,6 @@ GROUP BY
     category;
 
 
--- avg age of customer from beauty purchase category
-
-SELECT 
-    category,
-    round(avg(age),0) as year_average
-FROM r_sales
-GROUP BY category
-HAVING category='Beauty';
-
-
---total transaction made by each gender in each category
-
-SELECT 
-    gender,
-    category,
-    count(transactions_id) as total_trans
-FROM r_sales
-GROUP BY gender,category;
-
 -- average sell in each month and best selling month in each year
 -- here we use CTE first to group the data accorfing to year and month
 --then with its help we find the best selling month using subquery(correlated)
@@ -69,6 +50,29 @@ WHERE total_sale_month =
             WHERE
                 yr2.year=yr1.year
         )
+
+
+        
+-- avg age of customer from beauty purchase category
+
+SELECT 
+    category,
+    round(avg(age),0) as year_average
+FROM r_sales
+GROUP BY category
+HAVING category='Beauty';
+
+
+--total transaction made by each gender in each category
+
+SELECT 
+    gender,
+    category,
+    count(transactions_id) as total_trans
+FROM r_sales
+GROUP BY gender,category;
+
+
 
 
 
